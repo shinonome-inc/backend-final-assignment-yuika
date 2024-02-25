@@ -11,8 +11,15 @@
   <header class="mb-3">
     <nav>
       <ul>
-        <li><a href="{% url 'welcome:welcome' %}">Twitter Clone</a></li>
+        <h2><a href="{% url 'welcome:welcome' %}">Twitter Clone</a></h2>
+
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+        {% else %}
         <li><a href=" {% url 'accounts:signup' %}">Sign up</a></a></li>
+        <li><a href=" {% url 'accounts:login' %}">Log in</a></a></li>
+        {% endif %}
+
       </ul>
     </nav>
   </header>
